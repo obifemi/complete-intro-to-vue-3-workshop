@@ -9,13 +9,29 @@
   <body>
     <div  id="app">
       My App is here!
+      <p v-if="message%2===0">Even: {{ message }}</p>
+      <p v-if="message%2===1">Odd: {{ message }}</p>
+      <ul> 
+        <li v-for="number in listOfNumbers" :key="number">{{ number }}</li>
+      </ul>
     </div>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <script>
+
       const { createApp } = Vue;
-      const app = createApp()
+      const app = createApp(
+        {
+          data() {
+            return {
+              message: 2,
+              listOfNumbers : [1,2,3,4,5,6,7,8,9,10]
+            }
+          },
+        }
+      )
       app.mount('#app')
 
     </script>
-    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    
   </body>
 </html>
